@@ -1,0 +1,6 @@
+export type User = { id: string; email: string; full_name: string; role?: string }
+export type Business = { id: string; slug: string; business_name: string; category: string; city: string; state: string; phone: string; google_review_url: string; welcome_headline: string; welcome_subtext: string; brand_accent: string; show_direct_feedback_form: boolean; gstin?: string }
+export type QRCodeItem = { id: string; label: string; placement_location: string; short_code: string; theme: string; call_to_action: string; scans_count: number; google_clicks_count: number; feedback_count: number; is_active: boolean; created_at: string }
+export type Feedback = { id: string; qr_id: string; qr_label: string; rating: number; comment: string; customer_name: string; customer_phone: string; consent_to_contact: boolean; status: 'new'|'acknowledged'|'resolved'; internal_note: string; created_at: string }
+export type Metrics = { total_scans: number; google_clicks: number; feedback_count: number; average_rating: number; active_qr_codes: number; unread_notifications: number; new_feedback: number }
+export type NotificationItem = { id: string; feedback_id: string; event_type: string; title: string; message: string; rating: number; customer_name: string; qr_label: string; is_read: boolean; created_at: string }
