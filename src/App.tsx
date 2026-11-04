@@ -17,8 +17,13 @@ import PublicReviewPage from './pages/PublicReview'
 import ContactPage from './pages/Contact'
 import LandingPage from './pages/Landing'
 import LegalPage from './pages/LegalPage'
+import type { LucideIcon } from 'lucide-react';
 
-type NavItem = { to: string; label: string; icon: React.ComponentType<{ size?: number }>; end?: boolean; count?: number }
+type NavItem = {
+  to: string;
+  label: string;
+  icon: LucideIcon;
+} end?: boolean; count?: number }
 
 function Protected({ children }: { children: React.ReactNode }) { const { user, loading } = useAuth(); if (loading) return <Loading/>; return user ? <>{children}</> : <Navigate to="/login" replace/> }
 
