@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../lib/auth'
 import { ArrowUpRight, MousePointerClick, MessageSquareText, Star, QrCode, Plus, ChevronRight, Sparkles, Download } from 'lucide-react'
 import { api, shortDate } from '../lib/api'
 import type { Feedback, Metrics, QRCodeItem } from '../lib/types'
 import { MetricCard, PageTitle, Stars, EmptyState, Loading } from '../components/UI'
 
 export default function Overview() {
+  const {business}=useAuth()
   const [data,setData]=useState<{metrics:Metrics;recent_feedback:Feedback[];qr_codes:QRCodeItem[]}|null>(null); const [error,setError]=useState('')
   useEffect(()=>{api.get('/api/dashboard/summary').then(r=>setData(r.data)).catch(e=>setError(e.response?.data?.detail||'Unable to load dashboard'))},[])
   if(!data&&!error)return <Loading/>
   const m=data?.metrics
-  return <div className="page-stack"><PageTitle eyebrow="YOUR BUSINESS AT A GLANCE" title="Good evening 👋" subtitle="Here's what's happening with your customer experience." action={<Link className="btn btn-primary" to="/app/qrs"><Plus size={17}/> Create QR code</Link>}/>
+  return <div className="page-stack"><PageTitle eyebrow="YOUR BUSINESS AT A GLANCE" title="Good evening 👋" subtitle="Here's what's happening with your customer experience." action={<div className="overview-actions">{business?.google_business_url&&<a className="btn btn-secondary" href={business.google_business_url} target="_blank" rel="noopener noreferrer">Go to Google Business <ArrowUpRight size={16}/></a>}<Link className="btn btn-primary" to="/app/qrs"><Plus size={17}/> Create QR code</Link></div>}/>
     {error&&<div className="notice error-notice">{error}</div>}
     {m&&<div className="metric-grid"><MetricCard label="Total QR scans" value={m.total_scans.toLocaleString('en-IN')} hint="Customer visits from your QR codes" icon={<QrCode/>}/><MetricCard label="Google review visits" value={m.google_clicks.toLocaleString('en-IN')} hint="Customers who opened Google reviews" icon={<MousePointerClick/>}/><MetricCard label="Direct feedback" value={m.feedback_count.toLocaleString('en-IN')} hint={`${m.new_feedback} waiting for your attention`} icon={<MessageSquareText/>}/><MetricCard label="Average rating" value={m.average_rating ? `${m.average_rating.toFixed(1)} / 5` : '—'} hint={`${m.active_qr_codes} active QR standees`} icon={<Star/>}/></div>}
     <div className="welcome-banner"><div className="welcome-ornament"><Sparkles size={18}/></div><div><span className="banner-label">A LITTLE REMINDER</span><h3>Every piece of feedback is a chance to do better.</h3><p>Keep listening, keep improving, and let your best customer experiences shine.</p></div><Link to="/app/feedback" className="banner-link">View feedback <ArrowUpRight size={16}/></Link></div>
