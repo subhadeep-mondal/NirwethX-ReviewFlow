@@ -44,6 +44,7 @@ import PublicReviewPage from './pages/PublicReview'
 import ContactPage from './pages/Contact'
 import LandingPage from './pages/Landing'
 import LegalPage from './pages/LegalPage'
+import AdminPage from './pages/Admin'
 
 type NavItem = {
   to: string
