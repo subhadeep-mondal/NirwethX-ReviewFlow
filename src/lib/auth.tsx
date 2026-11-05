@@ -15,8 +15,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try { localStorage.setItem('rf_auth_logout', String(Date.now())) } catch { /* storage may be unavailable */ }
   }
   const refresh = async () => {
-    try { const { data } = await api.get('/api/auth/me'); setUser(data.user); setBusiness(data.business) }
-    catch { setUser(null); setBusiness(null) }
+    let logoutMarker = ''
+    try { logoutMarker = localStorage.getItem('rf_auth_logout') || '' } catch { /* storage may be unavailable */ }
+    try {
+      const { data } = await api.get('/api/auth/me')
+      let latestLogoutMarker = ''
+      try { latestLogoutMarker = localStorage.getItem('rf_auth_logout') || '' } catch { /* storage may be unavailable */ }
+      // A pending /me request must not restore a session after another tab logged out.
+      if (latestLogoutMarker !== logoutMarker) { setUser(null); setBusiness(null); return }
+      setUser(data.user); setBusiness(data.business)
+    } catch { setUser(null); setBusiness(null) }
     finally { setLoading(false) }
   }
   useEffect(() => {
