@@ -392,6 +392,11 @@ export default function App() {
       />
 
       <Route
+        path="/admin"
+        element={<AdminPage />}
+      />
+
+      <Route
         path="/login"
         element={<LoginPage />}
       />
