@@ -1,13 +1,13 @@
 import type * as React from 'react'
 import { useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react'
+import { Sparkles, ArrowRight, ArrowLeft, ShieldCheck } from 'lucide-react'
 import { useAuth } from '../lib/auth'
 import { getError } from '../lib/api'
 import { ErrorNotice } from '../components/UI'
 
 function AuthFrame({ children, title, subtitle }: { children: React.ReactNode; title: string; subtitle: string }) {
-  return <div className="auth-page"><div className="auth-aside"><div className="auth-brand"><span className="brand-mark"><Sparkles size={19}/></span>NirwethX <span>ReviewFlow</span></div><div className="auth-message"><div className="auth-kicker">A better way to grow</div><h1>Turn every experience into a <em>better connection.</em></h1><p>Make it effortless for customers to share feedback, and easier for your team to act on it.</p><div className="auth-proof"><div className="proof-avatars"><span>R</span><span>A</span><span>S</span><span>+</span></div><div><b>Made for local businesses</b><small>Simple. Insightful. Customer-first.</small></div></div></div><div className="auth-aside-foot">© {new Date().getFullYear()} NirwethX ReviewFlow</div></div><div className="auth-main"><div className="auth-card"><div className="auth-mobile-brand"><span className="brand-mark"><Sparkles size={19}/></span>NirwethX ReviewFlow</div><div className="auth-heading"><span className="eyebrow">YOUR BUSINESS, BETTER HEARD</span><h2>{title}</h2><p>{subtitle}</p></div>{children}<div className="auth-privacy"><ShieldCheck size={15}/> Your account and customer data stay private.</div></div></div></div>
+  return <div className="auth-page"><div className="auth-aside"><div className="auth-brand"><span className="brand-mark"><Sparkles size={19}/></span>NirwethX <span>ReviewFlow</span></div><div className="auth-message"><div className="auth-kicker">A better way to grow</div><h1>Turn every experience into a <em>better connection.</em></h1><p>Make it effortless for customers to share feedback, and easier for your team to act on it.</p><div className="auth-proof"><div className="proof-avatars"><span>R</span><span>A</span><span>S</span><span>+</span></div><div><b>Made for local businesses</b><small>Simple. Insightful. Customer-first.</small></div></div></div><div className="auth-aside-foot">© {new Date().getFullYear()} NirwethX ReviewFlow</div></div><div className="auth-main"><div className="auth-card"><Link to="/" className="auth-home-link"><ArrowLeft size={15}/> Back to homepage</Link><div className="auth-mobile-brand"><span className="brand-mark"><Sparkles size={19}/></span>NirwethX ReviewFlow</div><div className="auth-heading"><span className="eyebrow">YOUR BUSINESS, BETTER HEARD</span><h2>{title}</h2><p>{subtitle}</p></div>{children}<div className="auth-privacy"><ShieldCheck size={15}/> Your account and customer data stay private.</div></div></div></div>
 }
 
 export function LoginPage() {
