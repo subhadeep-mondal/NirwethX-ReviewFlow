@@ -59,7 +59,6 @@ export default function LegalPage() {
   return <div className="legal-page">
     <header className="legal-header"><Link to="/" className="landing-logo"><span className="brand-mark"><Sparkles size={17}/></span>NirwethX ReviewFlow</Link><Link to="/" className="back-link"><ArrowLeft size={15}/> Back to home</Link></header>
     <article className="legal-content"><span className="eyebrow">POLICIES & DISCLOSURES</span><h1>{item.title}</h1><p className="legal-updated">{item.updated}</p>
-      <div className="legal-warning">Template content: complete the operator&apos;s legal name, address, grievance contact, data processors, and operational timelines; obtain legal review before launch.</div>
       {item.sections.map(section => <section key={section.heading}><h2>{section.heading}</h2><p>{section.body}</p></section>)}
       <div className="legal-bottom"><Link to="/contact" className="btn btn-primary">Contact support</Link><Link to="/legal/retention">View retention schedule</Link></div>
     </article>
