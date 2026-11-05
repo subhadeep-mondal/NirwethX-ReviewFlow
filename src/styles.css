@@ -223,3 +223,13 @@ body{background:#f7faff;color:#101d43}
 .admin-delete{background:#fff1f2!important;color:#be123c!important;border:1px solid #fecdd3!important;padding:7px 10px!important;font-size:11px!important}
 .admin-delete:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:760px){.admin-table-head{align-items:stretch;flex-direction:column}.admin-filters{align-items:stretch;flex-direction:column}.admin-filters label,.admin-filters select{width:100%;max-width:none}.admin-table-head input{min-width:0;width:100%}}
+
+
+/* Keep the admin title and all three filters aligned on desktop. */
+@media(min-width:761px){
+  .admin-table-head{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,560px);align-items:center;gap:16px}
+  .admin-filters{display:grid;grid-template-columns:minmax(180px,1.35fr) minmax(125px,1fr) minmax(125px,1fr);align-items:center;gap:8px;min-width:0;flex-wrap:nowrap}
+  .admin-filters label{min-width:0;width:100%;box-sizing:border-box}
+  .admin-filters label input{min-width:0;width:100%}
+  .admin-filters select{width:100%;min-width:0;max-width:none;box-sizing:border-box}
+}
