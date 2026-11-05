@@ -133,3 +133,12 @@ body{background:#f7faff;color:#101d43}
 .landing-faq .landing-section-head,.faq-list{width:100%;max-width:900px;margin-left:auto;margin-right:auto}
 @media(max-width:850px){.landing-hero{grid-template-columns:1fr}.landing-cta{width:calc(100% - 40px)}}
 @media(max-width:480px){.landing-nav{padding-left:16px;padding-right:16px}.landing-hero{padding-left:18px;padding-right:18px}.landing-section,.landing-features,.landing-pricing{padding-left:18px;padding-right:18px}.landing-footer{padding-left:18px;padding-right:18px}}
+
+/* Improve footer readability and let the disclaimer use the full footer width */
+.landing-footer{width:100%;max-width:none;padding-left:clamp(24px,5vw,88px);padding-right:clamp(24px,5vw,88px)}
+.landing-footer-main>span{font-size:12px;line-height:1.6}
+.landing-footer-main>div{gap:20px}
+.landing-footer-main>div a{font-size:12px;line-height:1.6}
+.landing-disclaimer{width:100%;max-width:none;font-size:13px;line-height:1.85;color:#667894}
+.landing-disclaimer a{font-size:inherit}
+@media(max-width:480px){.landing-footer-main>span,.landing-footer-main>div a{font-size:11px}.landing-disclaimer{font-size:12px;line-height:1.75}}
