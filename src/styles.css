@@ -189,3 +189,26 @@ body{background:#f7faff;color:#101d43}
 @media(max-width:850px){.hero-art-image{margin:12px auto 0;width:100%}.hero-image-frame{width:min(100%,760px);transform:none}.hero-art-image .hero-float-qr{left:1%;bottom:5%}.hero-art-image .hero-float-rating{right:1%;top:5%}}
 @media(max-width:520px){.hero-image-frame{border-radius:16px}.hero-art-image .hero-float{display:none}.interactive-hero .hero-copy{animation:none}.interactive-hero .hero-art-image{animation:none}}
 @media(prefers-reduced-motion:reduce){.hero-image-frame,.interactive-hero .hero-copy,.interactive-hero .hero-art-image{animation:none!important;transition:none!important}}
+
+
+/* Blue brand treatment for login and registration split-panel */
+.auth-aside{
+  background:
+    radial-gradient(circle at 18% 20%,rgba(71,153,255,.42) 0,transparent 34%),
+    radial-gradient(circle at 88% 82%,rgba(20,102,255,.28) 0,transparent 38%),
+    linear-gradient(140deg,#082f83 0%,#0758d8 54%,#0875f5 100%);
+}
+.auth-aside:after{
+  border-color:rgba(255,255,255,.2);
+  box-shadow:0 0 0 50px rgba(255,255,255,.055),0 0 0 100px rgba(255,255,255,.035);
+}
+.auth-brand>span:last-child{color:#c8ddff}
+.auth-kicker{color:#c0dcff}
+.auth-message h1 em{color:#a9d0ff}
+.auth-message>p{color:#d5e5ff}
+.auth-proof small{color:#c0d9ff}
+.auth-aside-foot{color:#b8d4ff}
+.proof-avatars span{border-color:#164ca8;color:#164ca8}
+.auth-home-link:hover{color:#0758e8}
+.auth-switch a{color:#0758e8}
+.auth-privacy svg{color:#3984ed}
