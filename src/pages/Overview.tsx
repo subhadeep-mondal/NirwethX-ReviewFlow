@@ -8,12 +8,20 @@ import { MetricCard, PageTitle, Stars, EmptyState, Loading } from '../components
 
 export default function Overview() {
   const {business}=useAuth()
+  const [googleCopyNotice,setGoogleCopyNotice]=useState('')
+  const googleBusinessMessage='Thank you so much! We are grateful to see that you took out time to review us. We hope to see you again soon!'
+  const openGoogleBusiness=async()=>{
+    if(!business?.google_business_url)return
+    window.open(business.google_business_url,'_blank','noopener,noreferrer')
+    try{await navigator.clipboard.writeText(googleBusinessMessage);setGoogleCopyNotice('Message copied! Paste it into your Google Business tab.')}
+    catch{setGoogleCopyNotice('Google Business opened. Clipboard access was blocked, so please copy the message manually: '+googleBusinessMessage)}
+  }
   const [data,setData]=useState<{metrics:Metrics;recent_feedback:Feedback[];qr_codes:QRCodeItem[]}|null>(null); const [error,setError]=useState('')
   useEffect(()=>{api.get('/api/dashboard/summary').then(r=>setData(r.data)).catch(e=>setError(e.response?.data?.detail||'Unable to load dashboard'))},[])
   if(!data&&!error)return <Loading/>
   const m=data?.metrics
-  return <div className="page-stack"><PageTitle eyebrow="YOUR BUSINESS AT A GLANCE" title="Good evening 👋" subtitle="Here's what's happening with your customer experience." action={<div className="overview-actions">{business?.google_business_url&&<a className="btn btn-secondary" href={business.google_business_url} target="_blank" rel="noopener noreferrer">Go to Google Business <ArrowUpRight size={16}/></a>}<Link className="btn btn-primary" to="/app/qrs"><Plus size={17}/> Create QR code</Link></div>}/>
-    {error&&<div className="notice error-notice">{error}</div>}
+  return <div className="page-stack"><PageTitle eyebrow="YOUR BUSINESS AT A GLANCE" title="Good evening 👋" subtitle="Here's what's happening with your customer experience." action={<div className="overview-actions">{business?.google_business_url&&<button type="button" className="btn btn-secondary" onClick={openGoogleBusiness}>Go to Google Business <ArrowUpRight size={16}/></button>}<Link className="btn btn-primary" to="/app/qrs"><Plus size={17}/> Create QR code</Link></div>}/>
+    {error&&<div className="notice error-notice">{error}</div>}{googleCopyNotice&&<div className="notice success-notice" role="status">{googleCopyNotice}</div>}
     {m&&<div className="metric-grid"><MetricCard label="Total QR scans" value={m.total_scans.toLocaleString('en-IN')} hint="Customer visits from your QR codes" icon={<QrCode/>}/><MetricCard label="Google review visits" value={m.google_clicks.toLocaleString('en-IN')} hint="Customers who opened Google reviews" icon={<MousePointerClick/>}/><MetricCard label="Direct feedback" value={m.feedback_count.toLocaleString('en-IN')} hint={`${m.new_feedback} waiting for your attention`} icon={<MessageSquareText/>}/><MetricCard label="Average rating" value={m.average_rating ? `${m.average_rating.toFixed(1)} / 5` : '—'} hint={`${m.active_qr_codes} active QR standees`} icon={<Star/>}/></div>}
     <div className="welcome-banner"><div className="welcome-ornament"><Sparkles size={18}/></div><div><span className="banner-label">A LITTLE REMINDER</span><h3>Every piece of feedback is a chance to do better.</h3><p>Keep listening, keep improving, and let your best customer experiences shine.</p></div><Link to="/app/feedback" className="banner-link">View feedback <ArrowUpRight size={16}/></Link></div>
     <div className="dashboard-two-col"><section className="panel"><div className="panel-heading"><div><h2>Recent feedback</h2><p>Latest notes from your customers</p></div><Link to="/app/feedback" className="text-link">View all <ChevronRight size={15}/></Link></div>{data?.recent_feedback.length? <div className="feedback-preview-list">{data.recent_feedback.map(f=><div className="feedback-preview" key={f.id}><div className="customer-avatar">{(f.customer_name||'A').charAt(0).toUpperCase()}</div><div className="feedback-preview-main"><div className="feedback-preview-top"><b>{f.customer_name}</b><span>{shortDate(f.created_at)}</span></div><Stars value={f.rating} size={13}/><p>{f.comment || 'No comment provided.'}</p><small>{f.qr_label}</small></div><span className={`status status-${f.status}`}>{f.status}</span></div>)}</div>:<EmptyState title="Your inbox is ready" text="Customer feedback will show up here as soon as someone shares their experience."/>}</section>
