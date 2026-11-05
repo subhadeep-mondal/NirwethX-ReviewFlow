@@ -17,7 +17,7 @@ const content: Record<string, Policy> = {
       { heading: 'Service', body: 'ReviewFlow provides QR-based customer review links, direct feedback collection, analytics, and business workflow tools. Feature availability may change as the service evolves.' },
       { heading: 'Business responsibilities', body: 'You must provide accurate business information and use only review URLs that you control or are authorized to share. Do not use the service to mislead customers, suppress negative feedback, incentivize reviews in violation of platform rules, or expose customer data.' },
       { heading: 'Fair review collection', body: 'The public Google review option is presented to customers regardless of the rating they select. ReviewFlow is not a Google product and does not create, edit, or guarantee Google reviews.' },
-      { heading: 'Billing', body: "Prices shown in the application are ₹299 per month and ₹2,999 per year. Paid access is activated after the payment provider's verified server notification. Refunds and cancellations are governed by the published refund policy and applicable law." },
+      { heading: 'Billing', body: "Prices shown in the application are ₹349 per month and ₹3,499 per year. Paid access is activated after the payment provider's verified server notification. Refunds and cancellations are governed by the published refund policy and applicable law." },
       { heading: 'Disclaimer', body: 'The service is provided subject to applicable law and the final signed customer agreement. This starter text is not legal advice and must be reviewed before commercial launch.' },
     ],
   },
