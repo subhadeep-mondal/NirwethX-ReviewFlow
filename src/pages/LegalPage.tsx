@@ -4,7 +4,7 @@ import { ArrowLeft, Sparkles } from 'lucide-react'
 type Policy = { title: string; updated: string; sections: { heading: string; body: string }[] }
 const content: Record<string, Policy> = {
   privacy: {
-    title: 'Privacy Policy', updated: 'Review before launch', sections: [
+    title: 'Privacy Policy', updated: 'November 2026', sections: [
       { heading: 'Information we process', body: "ReviewFlow processes account details, business profile data, QR activity, customer feedback, and any contact information a customer chooses to provide. Contact consent is optional and is recorded separately." },
       { heading: 'Purpose and lawful handling', body: 'Information is used to provide the review collection service, deliver feedback to the relevant business, maintain account security, provide analytics, process subscriptions, and respond to support requests. Businesses are responsible for providing suitable notices to their customers.' },
       { heading: 'Retention and deletion', body: 'The starter application records a default 365-day consent retention date. An automated deletion/retention enforcement job is not yet included. Production operators must implement retention, deletion, backup expiry, and customer-rights workflows before launch.' },
@@ -13,7 +13,7 @@ const content: Record<string, Policy> = {
     ],
   },
   terms: {
-    title: 'Terms of Service', updated: 'Review before launch', sections: [
+    title: 'Terms of Service', updated: 'November 2026', sections: [
       { heading: 'Service', body: 'ReviewFlow provides QR-based customer review links, direct feedback collection, analytics, and business workflow tools. Feature availability may change as the service evolves.' },
       { heading: 'Business responsibilities', body: 'You must provide accurate business information and use only review URLs that you control or are authorized to share. Do not use the service to mislead customers, suppress negative feedback, incentivize reviews in violation of platform rules, or expose customer data.' },
       { heading: 'Fair review collection', body: 'The public Google review option is presented to customers regardless of the rating they select. ReviewFlow is not a Google product and does not create, edit, or guarantee Google reviews.' },
@@ -22,7 +22,7 @@ const content: Record<string, Policy> = {
     ],
   },
   refund: {
-    title: 'Refund & Cancellation Policy', updated: 'Review before launch', sections: [
+    title: 'Refund & Cancellation Policy', updated: 'November 2026', sections: [
       { heading: 'Subscriptions', body: 'The application offers monthly and annual subscriptions. The current checkout implementation creates Razorpay orders and relies on verified payment webhooks to activate paid access.' },
       { heading: 'Cancellation', body: 'For cancellation requests, contact support with the account email and payment reference. A self-service cancellation and automated renewal management screen is not included in this starter build.' },
       { heading: 'Refund requests', body: 'Refund eligibility, timelines, exceptions, and processing fees must be defined by the service operator and reviewed under applicable Indian consumer and payment rules before accepting live payments. Do not treat this template as a final commercial refund promise.' },
@@ -30,7 +30,7 @@ const content: Record<string, Policy> = {
     ],
   },
   disclaimer: {
-    title: 'Website & Service Disclaimer', updated: 'Review before launch', sections: [
+    title: 'Website & Service Disclaimer', updated: 'November 2026', sections: [
       { heading: '1. What ReviewFlow does', body: 'NirwethX ReviewFlow is a software tool that helps businesses create QR-based customer feedback pages, direct private feedback forms, links to third-party review destinations, and dashboards for viewing submitted feedback and activity. The service provides workflow and reporting tools; it does not guarantee customer satisfaction, business growth, ratings, reviews, revenue, search ranking, or any particular business outcome.' },
       { heading: '2. Independent service; no Google affiliation', body: 'NirwethX ReviewFlow is an independent service and is not owned, operated, endorsed, sponsored, or approved by Google. Google, Google Maps, and Google Business Profile are third-party services subject to their own terms, policies, features, and availability. ReviewFlow does not control Google or any other third-party platform, its algorithms, moderation, display decisions, account access, review publication, removal, or service interruptions.' },
       { heading: '3. Customer reviews and feedback', body: 'Customers decide whether to submit feedback or publish a review and are responsible for the content they provide. ReviewFlow does not write, fabricate, guarantee, edit, or publish Google reviews on a customer\'s behalf. A link or copy/paste assistance does not guarantee that a review will be accepted, displayed, or retained by a third-party platform. Businesses must not manipulate ratings, selectively solicit only positive reviews, offer prohibited incentives, suppress negative feedback, or otherwise violate applicable platform policies or law.' },
@@ -44,7 +44,7 @@ const content: Record<string, Policy> = {
     ],
   },
   retention: {
-    title: 'Data Retention', updated: 'Review before launch', sections: [
+    title: 'Data Retention', updated: 'November 2026', sections: [
       { heading: 'Operational records', body: 'Account and business records are retained while the workspace is active, subject to applicable legal and contractual requirements.' },
       { heading: 'Customer feedback', body: 'Feedback submissions store a timestamp and a consent ledger record with a nominal 365-day retention expiry. A scheduled deletion worker and backup purge process must be implemented before production.' },
       { heading: 'Audit and security logs', body: 'Security and audit events should be retained only as long as needed for security, compliance, dispute handling, and legal requirements. Operators must set an explicit schedule.' },
