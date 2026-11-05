@@ -1,4 +1,5 @@
 import type * as React from 'react'
+import type { LucideIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { LayoutDashboard, QrCode, MessageSquareText, ChartNoAxesCombined, Bell, Settings, CreditCard, LogOut, Menu, X, Sparkles, ExternalLink, LifeBuoy, Store } from 'lucide-react'
@@ -17,13 +18,8 @@ import PublicReviewPage from './pages/PublicReview'
 import ContactPage from './pages/Contact'
 import LandingPage from './pages/Landing'
 import LegalPage from './pages/LegalPage'
-import type { LucideIcon } from 'lucide-react';
 
-type NavItem = {
-  to: string;
-  label: string;
-  icon: LucideIcon;
-} end?: boolean; count?: number }
+type NavItem = { to: string; label: string; icon: LucideIcon; end?: boolean; count?: number }
 
 function Protected({ children }: { children: React.ReactNode }) { const { user, loading } = useAuth(); if (loading) return <Loading/>; return user ? <>{children}</> : <Navigate to="/login" replace/> }
 
