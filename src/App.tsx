@@ -282,13 +282,20 @@ function AppLayout() {
             </span>
 
             <button
+              className="profile-logout"
+              type="button"
               title="Sign out"
+              aria-label="Sign out"
               onClick={async () => {
-                await logout()
-                navigate('/login')
+                try {
+                  await logout()
+                } finally {
+                  navigate('/login', { replace: true })
+                }
               }}
             >
-              <LogOut size={17} />
+              <LogOut size={15} />
+              <span>Sign out</span>
             </button>
 
           </div>
