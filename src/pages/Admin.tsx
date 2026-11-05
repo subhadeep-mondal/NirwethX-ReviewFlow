@@ -1,3 +1,4 @@
+import type * as React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShieldCheck, LogOut, RefreshCw, Search, Users, Star, CalendarDays, Building2 } from 'lucide-react'
